@@ -9,13 +9,13 @@ api = Api(app)
 repo_add_args = reqparse.RequestParser()
 repo_add_args.add_argument("name",type=str , help="" , required=True)
 repo_add_args.add_argument("language",type=str , help="",required=True)
-repo_add_args.add_argument("repo_id",type=int , help="",required=True)
+# repo_add_args.add_argument("repo_id",type=int , help="",required=True)
 github_data = {}
 class repos(Resource):
-    def get(self,items,repo_id,language):
-        return github_data[items][repo_id][language]
+    def get(self,repo_id,name,language):
+        return {"ID":repo_id,"name":name,"language":language}
 
-api.add_resource(repos,"/api/<int:repo_id>")
+api.add_resource(repos,"/api/<int:repo_id>/<string:name>/<string:language>")
 
 
 
