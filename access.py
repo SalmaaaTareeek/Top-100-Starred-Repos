@@ -25,12 +25,16 @@ for k in list_of_languages_with_rep:
     else:
         list_of_unique_langs_and_users["language"].append(k)
         list_of_unique_langs_and_users["users"].append(list_of_languages_with_rep.count(k))
+number_of_repos_used = {k: [] for k in list_of_unique_langs_and_users["language"]}
+for iter,m in enumerate(number_of_repos_used.keys()):
+    number_of_repos_used[m] = list_of_unique_langs_and_users["users"][iter]
+print(number_of_repos_used)
 list_of_repos_using_specfic_lang = {k: [] for k in list_of_unique_langs_and_users["language"]}
 for m in list_of_repos_using_specfic_lang.keys():
     for iter , n in enumerate(list_of_names_and_languages["language"]):
         if m == n:
             list_of_repos_using_specfic_lang[m].append(list_of_names_and_languages["name"][iter])
-print(list_of_repos_using_specfic_lang)
+# print(list_of_repos_using_specfic_lang)
 
 
 
