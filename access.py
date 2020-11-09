@@ -25,24 +25,11 @@ for k in list_of_languages_with_rep:
     else:
         list_of_unique_langs_and_users["language"].append(k)
         list_of_unique_langs_and_users["users"].append(list_of_languages_with_rep.count(k))
-#
-# for iteration,m in enumerate(list_of_names_and_languages["language"]):
-#     if m in list_of_repos_using_specfic_lang:
-#         list_of_repos_using_specfic_lang[m].append(list_of_names_and_languages["name"][iteration])
-#     else:
-#         list_of_repos_using_specfic_lang[m] = list_of_names_and_languages["name"][iteration]
-# for m in range(len(list_of_names_and_languages["language"])):
-#     if list_of_names_and_languages["language"][m] in list_of_repos_using_specfic_lang:
-#        value = list_of_names_and_languages["name"][m]
-#        list_of_repos_using_specfic_lang[str(list_of_names_and_languages["language"][m])] = value
-#     else:
-#         list_of_repos_using_specfic_lang[list_of_names_and_languages["language"][m]] = list_of_names_and_languages["name"][m]
-for iteration,m in enumerate(list_of_names_and_languages["language"]):
-    if m not in list_of_repos_using_specfic_lang:
-        list_of_repos_using_specfic_lang[m] = list_of_names_and_languages["name"][iteration]
-    else:
-        list_of_repos_using_specfic_lang[m] += ","
-        list_of_repos_using_specfic_lang[m] += list_of_names_and_languages["name"][iteration]
+list_of_repos_using_specfic_lang = {k: [] for k in list_of_unique_langs_and_users["language"]}
+for m in list_of_repos_using_specfic_lang.keys():
+    for iter , n in enumerate(list_of_names_and_languages["language"]):
+        if m == n:
+            list_of_repos_using_specfic_lang[m].append(list_of_names_and_languages["name"][iter])
 print(list_of_repos_using_specfic_lang)
 
 
